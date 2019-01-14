@@ -6,12 +6,16 @@
 </template>
 
 <script>
-  import FooterGuide from './components/FooterGuide/FooterGuide.vue'
-  export default {
-    components: {
-      FooterGuide
-    }
+import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+
+export default {
+  created () {
+    this.$store.dispatch('getAddress')
+  },
+  components: {
+    FooterGuide
   }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
