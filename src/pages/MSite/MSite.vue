@@ -5,8 +5,13 @@
       <router-link class="header_search" to="/search" slot="left">
         <i class="iconfont icon-sousuo"></i>
       </router-link>
-      <router-link class="header_login" to="/login" slot="right">
-        <span class="header_login_text">登录|注册</span>
+      <router-link class="header_login" :to="userInfo._id ? '/userInfo' : '/login'" slot="right">
+        <span class="header_login_text" v-if="!userInfo._id">
+          登录|注册
+        </span>
+        <span class="header_login_text" v-else>
+          <i class="iconfont icon-person"></i>
+        </span>
       </router-link>
     </HeaderTop>
     <!--首页导航-->
@@ -72,7 +77,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['address', 'categorys']),
+    ...mapState(['address', 'categorys', 'userInfo']),
     categorysArr () {
       const max = 8
       const arr = []

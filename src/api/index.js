@@ -36,7 +36,7 @@ export const reqSmsLogin = (phone, code) => ajax('/api/login_sms', {phone, code}
 /**
  * 获取用户信息(根据会话)
  */
-export const reqUser = () => ajax('/api/userinfo')
+export const reqUserInfo = () => ajax('/api/userinfo')
 
 /**
  * 请求登出
