@@ -60,7 +60,7 @@ import Star from '../Star/Star.vue'
 export default {
   data () {
     return {
-      imgBaseUrl: 'http://cangdu.org:8001/img/'
+      imgBaseUrl: 'http://www.simlex.top/images/takeout/'
     }
   },
   computed: {
