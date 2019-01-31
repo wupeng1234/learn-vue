@@ -9,7 +9,8 @@ import {
   reqUserInfo,
   reqShopGoods,
   reqShopInfo,
-  reqShopRatings
+  reqShopRatings,
+  reqSearchGoods
 } from '../api'
 import {
   RECEIVE_ADDRESS,
@@ -22,7 +23,8 @@ import {
   RECEIVE_GOODS,
   INCREMENT_FOOD_COUNT,
   DECREMENT_FOOD_COUNT,
-  CLEAR_CART
+  CLEAR_CART,
+  RECEIVE_SEARCH_SHOPS
 } from './mutation-types'
 
 export default {
@@ -111,6 +113,12 @@ export default {
   // 同步清空购物车
   clearCart ({commit}) {
     commit(CLEAR_CART)
-  }
+  },
 
+  // 异步获取搜索的商家列表
+  async searchShops ({commit, state}, keyword) {
+    const {latitude, longitude} = state
+    const result = await reqSearchGoods(latitude + ',' + longitude, keyword)
+    commit(RECEIVE_SEARCH_SHOPS, {searchShops: result.data})
+  }
 }
